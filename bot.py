@@ -3,8 +3,9 @@ import asyncio
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import Message
 from db import Database
+from config import API_KEY
 
-TOKEN = "7590197064:AAF97UbvEqjnnuDdvgRnGD-_K6Ho5U2byvU"
+TOKEN = API_KEY
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()

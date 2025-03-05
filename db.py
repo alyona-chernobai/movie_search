@@ -1,13 +1,15 @@
 import mysql.connector
+from config import DB_PASSWORD_SAKILA, DB_PASSWORD_ICH_EDIT
 import json
 import os
+
 
 class Database:
     def __init__(self):
         self.read_conn = mysql.connector.connect(
             host="ich-db.edu.itcareerhub.de",
             user="ich1",
-            password="password",
+            password=DB_PASSWORD_SAKILA,
             database="sakila"
         )
         self.read_cursor = self.read_conn.cursor(dictionary=True)
@@ -15,11 +17,10 @@ class Database:
         self.write_conn = mysql.connector.connect(
             host="ich-edit.edu.itcareerhub.de",
             user="ich1",
-            password="ich1_password_ilovedbs",
+            password=DB_PASSWORD_ICH_EDIT,
             database="ich_edit"
         )
         self.write_cursor = self.write_conn.cursor(dictionary=True)
-
     def search_by_keyword(self, keyword):
         cache = self.load_cache()
         if keyword in cache:
